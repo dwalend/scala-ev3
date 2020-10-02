@@ -1,0 +1,32 @@
+#Create the docker image via
+#FROM ev3dev/debian-stretch-cross
+FROM ev3dev/debian-buster-cross
+RUN sudo apt-get update && \
+    DEBIAN_FRONTEND=noninteractive sudo apt-get install --yes --no-install-recommends \
+        clang \
+#        libunwind-dev:armel \
+        libunwind-dev \
+#        libstdc++:armel \ # libstdc++-7-dev:armel or maybe libstdc++-8-dev:armel on buster
+        libgc-dev \
+        libre2-dev
+ENV PKG_CONFIG_PATH=/usr/lib/arm-linux-gnueabi/pkgconfig
+
+#todo get sdkman on the path
+#Install sdkman
+RUN \
+    sudo apt-get -qq update && \
+    sudo apt-get -qq -y install curl zip unzip && \
+    curl -s "https://get.sdkman.io" | bash          #this exits with a non-zero code.
+
+#Install java and sbt
+RUN \
+#    chmod a+x "$HOME/.sdkman/bin/sdkman-init.sh" && \
+    bash -c "source $HOME/.sdkman/bin/sdkman-init.sh && \
+    yes | sdk install java 8.0.265.hs-adpt && \
+    yes | sdk install sbt"
+
+#todo download https://github.com/dwalend/scala-native and sbt publishLocal
+
+#todo do something with a shell project to get sbt and scala loaded and running
+
+#todo fancy Scala on EV3 logo

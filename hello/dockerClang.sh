@@ -1,0 +1,3 @@
+#echo "About to launch docker clang with $@"
+#docker run --rm -v /Users/dwalend/projects/scala-ev3/scala-native-example/:/Users/dwalend/projects/scala-ev3/scala-native-example -w /Users/dwalend/projects/scala-ev3/scala-native-example ev3clang clang --target=arm-linux-gnueabi "$@"
+docker run --rm -v /Users/dwalend/projects/scala-ev3/scala-native-example/:/Users/dwalend/projects/scala-ev3/scala-native-example -w /Users/dwalend/projects/scala-ev3/scala-native-example ev3clang clang "$@"
