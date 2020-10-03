@@ -26,6 +26,7 @@ RUN \
     yes | sdk install sbt"
 
 #download https://github.com/dwalend/scala-native and sbt publishLocal
+#todo the scala-native 0.4.0-M2 tag had to be built twice, but works fine second time through
 RUN \
     sudo apt-get -qq update && \
     sudo apt-get -qq -y install git && \
@@ -33,6 +34,7 @@ RUN \
     cd dwalend-scala-native && \
     git checkout ev3 && \
     bash -c "source $HOME/.sdkman/bin/sdkman-init.sh && \
+    sbt publishLocal ; \
     sbt publishLocal && \
     cd .."
 
