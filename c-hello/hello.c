@@ -2,7 +2,7 @@
 
 int main(int argc, const char *argv[])
 {
-  printf("Hello World!\n");
+  printf("Hello from C in an emulator!\n");
 
   return 0;
 }

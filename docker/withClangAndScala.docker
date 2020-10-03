@@ -20,7 +20,7 @@ RUN \
 
 #Install java and sbt
 RUN \
-#    chmod a+x "$HOME/.sdkman/bin/sdkman-init.sh" && \
+    chmod a+x "$HOME/.sdkman/bin/sdkman-init.sh" && \
     bash -c "source $HOME/.sdkman/bin/sdkman-init.sh && \
     yes | sdk install java 8.0.265.hs-adpt && \
     yes | sdk install sbt"

@@ -9,7 +9,7 @@ docker tag ev3dev/debian-stretch-cross ev3cc
 docker images
 emacs example/hello.c
 
-docker run --rm -it -v /Users/dwalend/projects/scala-ev3/ev3-C/example/:/src -w /src ev3cc
+docker run --rm -it -v /Users/dwalend/projects/scala-ev3/scala-ev3/example/:/src -w /src ev3cc
 
 And now on the docker prompt:
 
@@ -20,9 +20,9 @@ qemu-arm-static -L /usr/arm-linux-gnueabi/ ./hello
 
 To compile directly from the mac command line:
 
-docker run --rm -it -v /Users/dwalend/projects/scala-ev3/ev3-C/example/:/src -w /src ev3cc arm-linux-gnueabi-gcc -o hello hello.c
+docker run --rm -it -v /Users/dwalend/projects/scala-ev3/scala-ev3/example/:/src -w /src ev3cc arm-linux-gnueabi-gcc -o hello hello.c
 
-docker run --rm -it -v /Users/dwalend/projects/scala-ev3/ev3-C/example/:/src -w /src ev3cc qemu-arm-static -L /usr/arm-linux-gnueabi/ ./hello
+docker run --rm -it -v /Users/dwalend/projects/scala-ev3/scala-ev3/example/:/src -w /src ev3cc qemu-arm-static -L /usr/arm-linux-gnueabi/ ./hello
 
 ---
 
@@ -36,23 +36,23 @@ qemu-arm-static -L /usr/arm-linux-gnueabi/ ./hello
 
 - or -
 
-docker run --rm -it -v /Users/dwalend/projects/scala-ev3/ev3-C/example/:/src -w /src ev3cc clang --target=arm-linux-gnueabi -mabi=aapcs-linux -mfloat-abi=soft -march=armv5te -I /usr/arm-linux-gnueabi/include -o hello hello.c
+docker run --rm -it -v /Users/dwalend/projects/scala-ev3/scala-ev3/example/:/src -w /src ev3cc clang --target=arm-linux-gnueabi -mabi=aapcs-linux -mfloat-abi=soft -march=armv5te -I /usr/arm-linux-gnueabi/include -o hello hello.c
 
-docker run --rm -it -v /Users/dwalend/projects/scala-ev3/ev3-C/example/:/src -w /src ev3cc qemu-arm-static -L /usr/arm-linux-gnueabi/ ./hello
+docker run --rm -it -v /Users/dwalend/projects/scala-ev3/scala-ev3/example/:/src -w /src ev3cc qemu-arm-static -L /usr/arm-linux-gnueabi/ ./hello
 
 ---
 
 Docker image with clang
 
-cd to the /Users/dwalend/projects/scala-ev3/ev3-C/docker directory
+cd to the /Users/dwalend/projects/scala-ev3/scala-ev3/docker directory
 
 docker build --no-cache --tag ev3clang -f withClang.dockerfile .
 
 Can now
 
-docker run --rm -it -v /Users/dwalend/projects/scala-ev3/ev3-C/example/:/src -w /src ev3clang clang --target=arm-linux-gnueabi -mabi=aapcs-linux -mfloat-abi=soft -march=armv5te -I /usr/arm-linux-gnueabi/include -o hello hello.c
+docker run --rm -it -v /Users/dwalend/projects/scala-ev3/scala-ev3/example/:/src -w /src ev3clang clang --target=arm-linux-gnueabi -mabi=aapcs-linux -mfloat-abi=soft -march=armv5te -I /usr/arm-linux-gnueabi/include -o hello hello.c
 
-docker run --rm -it -v /Users/dwalend/projects/scala-ev3/ev3-C/example/:/src -w /src ev3clang qemu-arm-static -L /usr/arm-linux-gnueabi/ ./hello
+docker run --rm -it -v /Users/dwalend/projects/scala-ev3/scala-ev3/example/:/src -w /src ev3clang qemu-arm-static -L /usr/arm-linux-gnueabi/ ./hello
 
 ---
 
