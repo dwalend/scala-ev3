@@ -25,7 +25,16 @@ RUN \
     yes | sdk install java 8.0.265.hs-adpt && \
     yes | sdk install sbt"
 
-#todo download https://github.com/dwalend/scala-native and sbt publishLocal
+#download https://github.com/dwalend/scala-native and sbt publishLocal
+RUN \
+    sudo apt-get -qq update && \
+    sudo apt-get -qq -y install git && \
+    git clone https://github.com/dwalend/scala-native.git dwalend-scala-native && \
+    cd dwalend-scala-native && \
+    git checkout ev3 && \
+    bash -c "source $HOME/.sdkman/bin/sdkman-init.sh && \
+    sbt publishLocal && \
+    cd .."
 
 #todo do something with a shell project to get sbt and scala loaded and running
 
