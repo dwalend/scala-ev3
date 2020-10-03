@@ -14,3 +14,16 @@ arm-linux-gnueabi-gcc -o target/hello hello.c
 qemu-arm-static -L /usr/arm-linux-gnueabi/ target/hello
 
 Hello World!
+
+Run a Hello world with scala-native (still x86)
+
+cd hello/
+sbt run
+...
+[info] Total (15958 ms)
+Hello from Scala Native!
+[success] Total time: 24 s, completed Oct 3, 2020 7:46:16 PM
+
+
+
+Next is to get it to build for ARM.
