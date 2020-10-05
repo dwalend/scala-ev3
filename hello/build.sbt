@@ -11,12 +11,14 @@ nativeCompileOptions ++= Seq(
   "-mabi=aapcs-linux",
   "-mfloat-abi=soft",
   "-march=armv5te",
-  "-I /usr/arm-linux-gnueabi/include"
+  "-I /usr/arm-linux-gnueabi/include",
+  "-I /usr/arm-linux-gnueabi/include/c++/8",
+  "-I /usr/arm-linux-gnueabi/include/c++/8/arm-linux-gnueabi"//,
+//  "-D __CLANG_UNWIND_H"
+  //"-v"
 //  "-fuse-ld=/usr/arm-linux-gnueabi/bin/ld"
 
 //  ,
-//  "-I /usr/arm-linux-gnueabi/include/c++/6",
-//  "-D __CLANG_UNWIND_H"
 )
 
 nativeLinkingOptions ++= Seq(
@@ -24,9 +26,12 @@ nativeLinkingOptions ++= Seq(
   "-mabi=aapcs-linux",
   "-mfloat-abi=soft",
   "-march=armv5te",
-  "-I /usr/arm-linux-gnueabi/include"
-//  "-fuse-ld=/usr/arm-linux-gnueabi/bin/ld"
+  "-I /usr/arm-linux-gnueabi/include",
+  "-I /usr/arm-linux-gnueabi/include/c++/8",
+  "-I /usr/arm-linux-gnueabi/include/c++/8/arm-linux-gnueabi"//,
 //  "-D __CLANG_UNWIND_H"
+  //"-v"
+//  "-fuse-ld=/usr/arm-linux-gnueabi/bin/ld"
 )
 
 nativeGC := "boehm"

@@ -1,6 +1,8 @@
 #Create the docker image via
 #FROM ev3dev/debian-stretch-cross
 FROM ev3dev/debian-buster-cross
+
+#Install clang and the c and c++ libraries
 RUN sudo apt-get update && \
     DEBIAN_FRONTEND=noninteractive sudo apt-get install --yes --no-install-recommends \
         clang \
@@ -8,10 +10,10 @@ RUN sudo apt-get update && \
         libunwind-dev \
 #        libstdc++:armel \ # libstdc++-7-dev:armel or maybe libstdc++-8-dev:armel on buster
         libgc-dev \
+#        gcc-multilib \
         libre2-dev
 ENV PKG_CONFIG_PATH=/usr/lib/arm-linux-gnueabi/pkgconfig
 
-#todo get sdkman on the path
 #Install sdkman
 RUN \
     sudo apt-get -qq update && \
@@ -26,7 +28,7 @@ RUN \
     yes | sdk install sbt"
 
 #download https://github.com/dwalend/scala-native and sbt publishLocal
-#todo the scala-native 0.4.0-M2 tag had to be built twice, but works fine second time through
+#todo fix: the scala-native 0.4.0-M2 tag had to be built twice, but works fine second time through
 RUN \
     sudo apt-get -qq update && \
     sudo apt-get -qq -y install git && \
