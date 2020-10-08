@@ -8,13 +8,13 @@ RUN sudo apt-get update && \
         clang \
         gcc-multilib \
         libstdc++6-8-dbg:armel \
-        libgc-dev 
+        libgc-dev
+
+#        libunwind-dev #I should need to instal this, but already have duplicate unwind headers
 
 #        libstdc++:armel \ # libstdc++-7-dev:armel or maybe libstdc++-8-dev:armel on buster #doesn't seem happily installed
-#        libunwind-dev:armel \ #installing this leads to the duplicate unwind declarations
+#        libunwind-dev:armel \ #I should need to instal this, but already have duplicate unwind headers
 
-#        These seem to help
-#        libunwind-dev \  #installing this leads to the duplicate unwind declarations
 #        libre2-dev
 
 #Hack to help the compiler find the right headers
